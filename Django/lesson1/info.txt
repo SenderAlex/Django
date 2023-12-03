@@ -1,0 +1,18 @@
+django-admin startproject project_1
+python .\manage.py startapp app1
+python .\manage.py runserver 8000
+python .\manage.py makemigrations app1 -- создает скрипты
+python .\manage.py migrate -- применяет скрипты и выполняет скрипты
+python .\manage.py createsuperuser -- команда для создания superuser
+
+#########################################################################
+# python -m django --version   это версия
+# pip install Django           это установка Django
+# django-admin startproject  testproject    это установка Django проекта
+# python .\manage.py startapp testapp1      через скрипт .\manage.py создаем приложение
+# python .\manage.py runserver 8000   эта команда запускает наше приложение testapp1
+# ctrl+C -- останавливает Django server
+# pip install django-debug-toolbar
+C:\Users\LENOVO\PycharmProjects\pythonProject1\Django\lesson1\project_1
+
+

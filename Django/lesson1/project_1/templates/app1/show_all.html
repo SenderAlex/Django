@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 align="center">Вся наша мебель</h1>
+{% if mebels %}
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-inverse">
+        <tr>
+            <th scope="col"><center>Цена</center></th>
+            <th scope="col"><center>Описание</center></th>
+            <th scope="col"><center>Дата получения</center></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for mebel in mebels %}  {# Не знаю как сделать в пагинации, чтобы было #1 2 3...29 30 31, а пишет все числа подряд#}
+            <tr>
+              <td><a href={{mebel.link}}>{{mebel.price}}</a></td>
+              <td>{{ mebel.description }}</td>
+              <td>{{ mebel.parse_datetime }}</td>
+            </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% else %}
+   <h2>К сожалению мебели еще нет</h2>
+{% endif %}
+        {% if is_paginated %}
+        <nav>
+            <ul class="pagination">
+                {% if current_page.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ current_page.previous_page_number }}">Previous</a></li>
+                {% endif %}
+                {% for page in paginator.page_range %}
+                    <li class="page-item {% if page == current_page.number %}active{% endif %}">
+                        <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                    </li>
+                {% endfor %}
+                {% if current_page.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ current_page.next_page_number }}">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+{% endblock %}
